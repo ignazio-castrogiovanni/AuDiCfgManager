@@ -63,6 +63,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonSoundFileLocation = new System.Windows.Forms.Button();
+            this.openFileDialogTalk = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -124,6 +125,7 @@
             this.buttonChangeFileLocation.TabIndex = 7;
             this.buttonChangeFileLocation.Text = "...";
             this.buttonChangeFileLocation.UseVisualStyleBackColor = true;
+            this.buttonChangeFileLocation.Click += new System.EventHandler(this.buttonChangeFileLocation_Click);
             // 
             // labelTargetProcessName
             // 
@@ -404,6 +406,10 @@
             this.buttonSoundFileLocation.Text = "...";
             this.buttonSoundFileLocation.UseVisualStyleBackColor = true;
             // 
+            // openFileDialogTalk
+            // 
+            this.openFileDialogTalk.FileName = "openFileDialogTalk";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,6 +473,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSoundFileLocation;
+        private System.Windows.Forms.OpenFileDialog openFileDialogTalk;
     }
 }
 

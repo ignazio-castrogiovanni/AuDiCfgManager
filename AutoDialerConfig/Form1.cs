@@ -151,6 +151,12 @@ namespace AutoDialerConfig
                 this.buttonSoundFileLocation.Enabled = false;
             }
         }
+
+        private void buttonChangeFileLocation_Click(object sender, EventArgs e)
+        {
+            // Have a look there: http://www.dotnetperls.com/openfiledialog
+            DialogResult talkFileResult = this.openFileDialogTalk.ShowDialog();
+        }
         
         // Later on, on value changed update configMap.
 
