@@ -13,19 +13,120 @@ namespace AutoDialerConfig
 {
     public partial class Form1 : Form
     {
+        private string m_strConfigFilePath;
+        Dictionary<string, string> m_dictKeys;
         public Form1()
         {
-            string strAutodialerConfigFile = @"AutoDial.exe.config";
+            string strConfigFilePath = @"C:\Autodial\Dialing\AutoDial_0.14\AutoDial.exe.config";
+            m_dictKeys = new Dictionary<string, string>();
             InitializeComponent();
-            ReadConfigSettings(strAutodialerConfigFile);
+            ReadConfigSettings(strConfigFilePath);
+            updateUI();
         }
 
-        private void ReadConfigSettings(string strAutodialerConfigFile)
+        private void ReadConfigSettings(string strConfigFilePath)
         {
-            // Have a look at http://stackoverflow.com/questions/10150785/using-xmltextreader
-            XmlTextReader xmlReader = new XmlTextReader(strAutodialerConfigFile);
+            // Open the xml file
+            XmlDocument xmlConfigDoc = new XmlDocument();
+            xmlConfigDoc.Load(strConfigFilePath);
 
+            // Read all the app tag and fill the configMap with key and value
+            XmlNodeList xmlNLAppTags = xmlConfigDoc.GetElementsByTagName("add");
+            for(int i = 0; i < xmlNLAppTags.Count; ++i)
+            {
+                XmlNode xmlCurrNode = xmlNLAppTags.Item(i);
+                m_dictKeys.Add(xmlCurrNode.Attributes["key"].Value, xmlCurrNode.Attributes["value"].Value);
+            }
+
+            Console.WriteLine("Finished reading");
         }
+
+        // Later on, Look on the configMap to update the UI
+        private void updateUI()
+        {
+            if (m_dictKeys.ContainsKey("targetProcessName"))
+            {
+                this.labelTargetProcessName.Text = m_dictKeys["targetProcessName"];
+            }
+
+            if (m_dictKeys.ContainsKey("targetProcessName"))
+            {
+                this.labelTalkProcessName.Text = m_dictKeys["talkProcessName"];
+            }
+
+            if (m_dictKeys.ContainsKey("programFileLocation"))
+            {
+                this.textBoxTalkFileLocation.Text = m_dictKeys["programFileLocation"];
+            }
+            //textBoxLocationX
+            if (m_dictKeys.ContainsKey("captureLocationX"))
+            {
+                this.textBoxLocationX.Text = m_dictKeys["captureLocationX"];
+            }
+
+            if (m_dictKeys.ContainsKey("captureLocationY"))
+            {
+                this.textBoxLocationY.Text = m_dictKeys["captureLocationY"];
+            }
+
+            if (m_dictKeys.ContainsKey("captureWidth"))
+            {
+                this.textBoxCaptureWidth.Text = m_dictKeys["captureWidth"];
+            }
+
+            if (m_dictKeys.ContainsKey("captureHeight"))
+            {
+                this.textBoxCaptureHeight.Text = m_dictKeys["captureHeight"];
+            }
+
+            if (m_dictKeys.ContainsKey("alertSound"))
+            {
+                string strAlertSound = m_dictKeys["alertSound"];
+                this.textBoxAlertSound.Text = strAlertSound;
+
+                if (strAlertSound != "")
+                {
+                    this.checkBoxAlertSound.Checked = true;
+                    this.textBoxAlertSound.Enabled = true;
+
+                    if (m_dictKeys.ContainsKey("alertDelay"))
+                    {
+                        this.textBoxSoundDelay.Text = m_dictKeys["alertDelay"];
+                    }
+                }
+            }
+            else
+            {
+                this.checkBoxAlertSound.Enabled = false;
+                this.textBoxAlertSound.Text = "";
+                this.textBoxAlertSound.Enabled = false;
+            }
+
+            if (m_dictKeys.ContainsKey("numberOverride") && m_dictKeys["numberOverride"] != "")
+            {
+                this.checkBoxNumberOverride.Checked = true;
+                this.textBoxAlertSound.Enabled = true;
+                this.textBoxNumberOverride.Text = m_dictKeys["numberOverride"];
+            }
+            else
+            {
+                this.checkBoxNumberOverride.Checked = false;
+                this.textBoxNumberOverride.Text = "";
+                this.textBoxNumberOverride.Enabled = false;
+            }
+
+            if (m_dictKeys.ContainsKey("cleanupFolder") && m_dictKeys["cleanupFolder"] == "true")
+            {
+                this.checkBoxCleanup.Checked = true;
+            }
+            else
+            {
+                this.checkBoxCleanup.Checked = false;
+            }
+        }
+        // Later on, on value changed update configMap.
+
+        // Later on, on save write the value in the xml file 
 
     }
 }
