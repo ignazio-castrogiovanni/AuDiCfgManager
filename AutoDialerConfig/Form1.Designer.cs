@@ -62,7 +62,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonSoundFileLocation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -92,9 +92,9 @@
             // 
             this.LogoPictureBox1.Image = global::AutoDialerConfig.Properties.Resources.rW2EoD2B_bigger;
             this.LogoPictureBox1.InitialImage = global::AutoDialerConfig.Properties.Resources.rW2EoD2B_bigger;
-            this.LogoPictureBox1.Location = new System.Drawing.Point(91, 12);
+            this.LogoPictureBox1.Location = new System.Drawing.Point(205, 22);
             this.LogoPictureBox1.Name = "LogoPictureBox1";
-            this.LogoPictureBox1.Size = new System.Drawing.Size(335, 77);
+            this.LogoPictureBox1.Size = new System.Drawing.Size(77, 77);
             this.LogoPictureBox1.TabIndex = 4;
             this.LogoPictureBox1.TabStop = false;
             this.LogoPictureBox1.WaitOnLoad = true;
@@ -114,6 +114,7 @@
             this.textBoxTalkFileLocation.Name = "textBoxTalkFileLocation";
             this.textBoxTalkFileLocation.Size = new System.Drawing.Size(417, 20);
             this.textBoxTalkFileLocation.TabIndex = 6;
+            this.textBoxTalkFileLocation.TabStop = false;
             // 
             // buttonChangeFileLocation
             // 
@@ -232,6 +233,7 @@
             this.checkBoxAlertSound.Size = new System.Drawing.Size(15, 14);
             this.checkBoxAlertSound.TabIndex = 26;
             this.checkBoxAlertSound.UseVisualStyleBackColor = true;
+            this.checkBoxAlertSound.CheckedChanged += new System.EventHandler(this.checkBoxAlertSound_CheckedChanged);
             // 
             // label12
             // 
@@ -300,6 +302,7 @@
             this.checkBoxNumberOverride.Size = new System.Drawing.Size(15, 14);
             this.checkBoxNumberOverride.TabIndex = 35;
             this.checkBoxNumberOverride.UseVisualStyleBackColor = true;
+            this.checkBoxNumberOverride.CheckedChanged += new System.EventHandler(this.checkBoxNumberOverride_CheckedChanged);
             // 
             // label11
             // 
@@ -354,7 +357,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.buttonSoundFileLocation);
             this.groupBox3.Controls.Add(this.checkBoxNumberOverride);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.textBoxNumberOverride);
@@ -392,14 +395,14 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonSoundFileLocation
             // 
-            this.button1.Location = new System.Drawing.Point(435, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 23);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonSoundFileLocation.Location = new System.Drawing.Point(435, 72);
+            this.buttonSoundFileLocation.Name = "buttonSoundFileLocation";
+            this.buttonSoundFileLocation.Size = new System.Drawing.Size(32, 23);
+            this.buttonSoundFileLocation.TabIndex = 36;
+            this.buttonSoundFileLocation.Text = "...";
+            this.buttonSoundFileLocation.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -463,7 +466,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonSoundFileLocation;
     }
 }
 

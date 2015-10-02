@@ -15,9 +15,8 @@ namespace AutoDialerConfig
     {
         private string m_strConfigFilePath;
         Dictionary<string, string> m_dictKeys;
-        public Form1()
+        public Form1(string strConfigFilePath)
         {
-            string strConfigFilePath = @"C:\Autodial\Dialing\AutoDial_0.14\AutoDial.exe.config";
             m_dictKeys = new Dictionary<string, string>();
             InitializeComponent();
             ReadConfigSettings(strConfigFilePath);
@@ -105,7 +104,7 @@ namespace AutoDialerConfig
             if (m_dictKeys.ContainsKey("numberOverride") && m_dictKeys["numberOverride"] != "")
             {
                 this.checkBoxNumberOverride.Checked = true;
-                this.textBoxAlertSound.Enabled = true;
+                this.textBoxNumberOverride.Enabled = true;
                 this.textBoxNumberOverride.Text = m_dictKeys["numberOverride"];
             }
             else
@@ -124,6 +123,35 @@ namespace AutoDialerConfig
                 this.checkBoxCleanup.Checked = false;
             }
         }
+
+        private void checkBoxNumberOverride_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxNumberOverride.Checked == true)
+            {
+                this.textBoxNumberOverride.Enabled = true;
+            }
+            else
+            {
+                this.textBoxNumberOverride.Enabled = false;
+            }
+        }
+
+        private void checkBoxAlertSound_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkBoxAlertSound.Checked == true)
+            {
+                this.textBoxAlertSound.Enabled = true;
+                this.textBoxSoundDelay.Enabled = true;
+                this.buttonSoundFileLocation.Enabled = true;
+            }
+            else
+            {
+                this.textBoxAlertSound.Enabled = false;
+                this.textBoxSoundDelay.Enabled = false;
+                this.buttonSoundFileLocation.Enabled = false;
+            }
+        }
+        
         // Later on, on value changed update configMap.
 
         // Later on, on save write the value in the xml file 
