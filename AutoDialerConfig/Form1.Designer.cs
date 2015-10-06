@@ -407,6 +407,7 @@
             this.buttonSave.TabIndex = 40;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // openFileDialogTalk
             // 
