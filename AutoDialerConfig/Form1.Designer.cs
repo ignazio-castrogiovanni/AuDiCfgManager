@@ -60,10 +60,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.buttonSoundFileLocation = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonSoundFileLocation = new System.Windows.Forms.Button();
             this.openFileDialogTalk = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialogSound = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -376,6 +377,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Behaviour";
             // 
+            // buttonSoundFileLocation
+            // 
+            this.buttonSoundFileLocation.Location = new System.Drawing.Point(435, 72);
+            this.buttonSoundFileLocation.Name = "buttonSoundFileLocation";
+            this.buttonSoundFileLocation.Size = new System.Drawing.Size(32, 23);
+            this.buttonSoundFileLocation.TabIndex = 36;
+            this.buttonSoundFileLocation.Text = "...";
+            this.buttonSoundFileLocation.UseVisualStyleBackColor = true;
+            this.buttonSoundFileLocation.Click += new System.EventHandler(this.buttonSoundFileLocation_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.checkBoxCleanup);
@@ -397,18 +408,9 @@
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             // 
-            // buttonSoundFileLocation
-            // 
-            this.buttonSoundFileLocation.Location = new System.Drawing.Point(435, 72);
-            this.buttonSoundFileLocation.Name = "buttonSoundFileLocation";
-            this.buttonSoundFileLocation.Size = new System.Drawing.Size(32, 23);
-            this.buttonSoundFileLocation.TabIndex = 36;
-            this.buttonSoundFileLocation.Text = "...";
-            this.buttonSoundFileLocation.UseVisualStyleBackColor = true;
-            // 
             // openFileDialogTalk
             // 
-            this.openFileDialogTalk.FileName = "openFileDialogTalk";
+            this.openFileDialogTalk.InitialDirectory = "C:\\";
             // 
             // Form1
             // 
@@ -474,6 +476,7 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonSoundFileLocation;
         private System.Windows.Forms.OpenFileDialog openFileDialogTalk;
+        private System.Windows.Forms.OpenFileDialog openFileDialogSound;
     }
 }
 

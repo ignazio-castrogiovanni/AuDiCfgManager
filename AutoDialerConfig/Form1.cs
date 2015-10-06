@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -154,8 +155,29 @@ namespace AutoDialerConfig
 
         private void buttonChangeFileLocation_Click(object sender, EventArgs e)
         {
-            // Have a look there: http://www.dotnetperls.com/openfiledialog
+            this.openFileDialogTalk.Title = "Open target process (Talk) file";
+            this.openFileDialogTalk.RestoreDirectory = true;
+            this.openFileDialogTalk.Filter = "Exe files (*.exe)|*.exe";
+           
             DialogResult talkFileResult = this.openFileDialogTalk.ShowDialog();
+
+            if (talkFileResult == DialogResult.OK)
+            {
+                this.textBoxTalkFileLocation.Text = openFileDialogTalk.FileName;
+            }
+        }
+
+        private void buttonSoundFileLocation_Click(object sender, EventArgs e)
+        {
+            this.openFileDialogSound.Title = "Open alert sound file";
+            this.openFileDialogSound.Filter = "Wav files (*.wav)|*.wav";
+
+            DialogResult soundFileResult = this.openFileDialogSound.ShowDialog();
+
+            if (soundFileResult == DialogResult.OK)
+            {
+                this.textBoxAlertSound.Text = openFileDialogSound.FileName;
+            }
         }
         
         // Later on, on value changed update configMap.
