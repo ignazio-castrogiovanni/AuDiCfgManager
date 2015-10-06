@@ -19,9 +19,9 @@ namespace AutoDialerConfig
 
             // Standard hardcoded value to take for granted if no parameter is passed through the 'console'
             string configFilePath = @"C:\Autodial\Dialing\AutoDial_0.14\AutoDial.exe.config";
-            if (args.Length > 1)
+            if (args.Length > 0)
             {
-                configFilePath = args[1];
+                configFilePath = args[0];
             }
             Application.Run(new Form1(configFilePath));
         }

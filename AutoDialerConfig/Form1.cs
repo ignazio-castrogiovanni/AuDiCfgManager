@@ -20,8 +20,11 @@ namespace AutoDialerConfig
 
         public Form1(string strConfigFilePath)
         {
-            m_dictKeys = new Dictionary<string, string>();
             InitializeComponent();
+            this.labelADConfigFile.Text = strConfigFilePath;
+            
+            m_dictKeys = new Dictionary<string, string>();
+
             ReadConfigSettings(strConfigFilePath);
             updateUI();
         }

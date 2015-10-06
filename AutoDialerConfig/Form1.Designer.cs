@@ -65,6 +65,8 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.openFileDialogTalk = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogSound = new System.Windows.Forms.OpenFileDialog();
+            this.labelADConfigFile = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,7 +96,7 @@
             // 
             this.LogoPictureBox1.Image = global::AutoDialerConfig.Properties.Resources.rW2EoD2B_bigger;
             this.LogoPictureBox1.InitialImage = global::AutoDialerConfig.Properties.Resources.rW2EoD2B_bigger;
-            this.LogoPictureBox1.Location = new System.Drawing.Point(205, 22);
+            this.LogoPictureBox1.Location = new System.Drawing.Point(208, 12);
             this.LogoPictureBox1.Name = "LogoPictureBox1";
             this.LogoPictureBox1.Size = new System.Drawing.Size(77, 77);
             this.LogoPictureBox1.TabIndex = 4;
@@ -332,7 +334,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 105);
+            this.groupBox1.Location = new System.Drawing.Point(12, 130);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(473, 125);
             this.groupBox1.TabIndex = 36;
@@ -351,7 +353,7 @@
             this.groupBox2.Controls.Add(this.textBoxLocationX);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(12, 236);
+            this.groupBox2.Location = new System.Drawing.Point(12, 261);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(473, 83);
             this.groupBox2.TabIndex = 37;
@@ -370,7 +372,7 @@
             this.groupBox3.Controls.Add(this.textBoxAlertSound);
             this.groupBox3.Controls.Add(this.checkBoxAlertSound);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(12, 335);
+            this.groupBox3.Location = new System.Drawing.Point(12, 360);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(473, 116);
             this.groupBox3.TabIndex = 38;
@@ -391,7 +393,7 @@
             // 
             this.groupBox4.Controls.Add(this.checkBoxCleanup);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Location = new System.Drawing.Point(12, 467);
+            this.groupBox4.Location = new System.Drawing.Point(12, 492);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(473, 60);
             this.groupBox4.TabIndex = 39;
@@ -401,7 +403,7 @@
             // buttonSave
             // 
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSave.Location = new System.Drawing.Point(184, 536);
+            this.buttonSave.Location = new System.Drawing.Point(192, 573);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(101, 37);
             this.buttonSave.TabIndex = 40;
@@ -413,11 +415,31 @@
             // 
             this.openFileDialogTalk.InitialDirectory = "C:\\";
             // 
+            // labelADConfigFile
+            // 
+            this.labelADConfigFile.AutoSize = true;
+            this.labelADConfigFile.Location = new System.Drawing.Point(119, 104);
+            this.labelADConfigFile.Name = "labelADConfigFile";
+            this.labelADConfigFile.Size = new System.Drawing.Size(37, 13);
+            this.labelADConfigFile.TabIndex = 41;
+            this.labelADConfigFile.Text = "(none)";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(17, 104);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 13);
+            this.label16.TabIndex = 42;
+            this.label16.Text = "Autodial config file:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 585);
+            this.ClientSize = new System.Drawing.Size(497, 632);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.labelADConfigFile);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -436,6 +458,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -478,6 +501,8 @@
         private System.Windows.Forms.Button buttonSoundFileLocation;
         private System.Windows.Forms.OpenFileDialog openFileDialogTalk;
         private System.Windows.Forms.OpenFileDialog openFileDialogSound;
+        private System.Windows.Forms.Label labelADConfigFile;
+        private System.Windows.Forms.Label label16;
     }
 }
 
