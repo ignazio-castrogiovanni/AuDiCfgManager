@@ -40,8 +40,16 @@ namespace AutoDialerConfig
             XmlNodeList xmlNLAppTags = m_xmlDocConfig.GetElementsByTagName("add");
             for(int i = 0; i < xmlNLAppTags.Count; ++i)
             {
+                // bool isCapital = nodes.Attributes["IsCapital"] != null;
+
                 XmlNode xmlCurrNode = xmlNLAppTags.Item(i);
-                m_dictKeys.Add(xmlCurrNode.Attributes["key"].Value, xmlCurrNode.Attributes["value"].Value);
+                if (xmlCurrNode.Attributes["key"] != null && xmlCurrNode.Attributes["value"] != null)
+                {
+                    string strCurrKey = xmlCurrNode.Attributes["key"].Value;
+                    string strCurrVal = xmlCurrNode.Attributes["value"].Value;
+                    m_dictKeys.Add(strCurrKey, strCurrVal);
+                }
+                
             }
 
             Console.WriteLine("Finished reading");
@@ -93,19 +101,25 @@ namespace AutoDialerConfig
                 if (strAlertSound != "")
                 {
                     this.checkBoxAlertSound.Checked = true;
-                    this.textBoxAlertSound.Enabled = true;
 
                     if (m_dictKeys.ContainsKey("alertDelay"))
                     {
                         this.textBoxSoundDelay.Text = m_dictKeys["alertDelay"];
                     }
+                    else
+                    {
+                        this.textBoxSoundDelay.Text = "";
+                        this.textBoxSoundDelay.Enabled = false;
+                    }
                 }
             }
             else
             {
-                this.checkBoxAlertSound.Enabled = false;
                 this.textBoxAlertSound.Text = "";
                 this.textBoxAlertSound.Enabled = false;
+
+                this.textBoxSoundDelay.Text = "";
+                this.textBoxSoundDelay.Enabled = false;
             }
 
             if (m_dictKeys.ContainsKey("numberOverride") && m_dictKeys["numberOverride"] != "")
