@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,12 @@ namespace AutoDialerConfig
         // Later on, Look on the configMap to update the UI
         private void updateUI()
         {
+            // Set textbox selectable
+            this.textBoxTalkFileFB.ReadOnly = true;
+            this.textBoxTalkFileFB.BorderStyle = 0;
+            this.textBoxTalkFileFB.BackColor = this.BackColor;
+            this.textBoxTalkFileFB.TabStop = false;
+
             if (m_dictKeys.ContainsKey("targetProcessName"))
             {
                 this.labelTargetProcessName.Text = m_dictKeys["targetProcessName"];
@@ -72,6 +79,7 @@ namespace AutoDialerConfig
             {
                 this.textBoxTalkFileLocation.Text = m_dictKeys["programFileLocation"];
             }
+            
             //textBoxLocationX
             if (m_dictKeys.ContainsKey("captureLocationX"))
             {
@@ -208,6 +216,7 @@ namespace AutoDialerConfig
             {
                 storeUiConfigInDictionary();
                 updateConfigFile();
+                MessageBox.Show("Config saved. Don't forget to restart the autodialer app.");
             }
         }
 
@@ -286,6 +295,51 @@ namespace AutoDialerConfig
                 }
             }
             m_xmlDocConfig.Save(m_strConfigFilePath);
+        }
+
+
+        // Get process path by name
+        public string getProcessPath(string strName)
+        {
+            Process[] processArray = Process.GetProcessesByName(strName);
+
+            if (processArray.Length > 0)
+            {
+                return processArray[0].MainModule.FileName;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        private void textBoxTalkFileLocation_TextChanged(object sender, EventArgs e)
+        {
+                // Check whether the file exist
+            if (File.Exists(this.textBoxTalkFileLocation.Text))
+            {
+                // If exist feedback OK msg - labelTalkFileFB
+                this.textBoxTalkFileLocation.ForeColor = System.Drawing.Color.Black;
+                this.textBoxTalkFileFB.ForeColor = System.Drawing.Color.Green;
+                this.textBoxTalkFileFB.Text = "Talk file location seems to be right.";
+            }
+            else
+            {
+                // Else suggest a talk path checking a talk running process 
+                this.textBoxTalkFileLocation.ForeColor = System.Drawing.Color.Red;
+                this.textBoxTalkFileFB.ForeColor = System.Drawing.Color.Black;
+
+                // Try and get talk running path
+                string strTalkRunningPath = this.getProcessPath(m_dictKeys["talkProcessName"]);
+                if (strTalkRunningPath != "")
+                {
+                    this.textBoxTalkFileFB.Text = String.Format("Try with this path: {0}", strTalkRunningPath);
+                }
+                else
+                {
+                    this.textBoxTalkFileFB.Text = "Try to run 'talk', and restart autodial config.";
+                }
+            }
         }
     }
 }
